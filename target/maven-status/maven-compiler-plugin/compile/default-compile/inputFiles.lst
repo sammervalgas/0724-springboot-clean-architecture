@@ -1,0 +1,10 @@
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/domain/models/Todo.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/presenter/dtos/TodoRequestDTO.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/core/shared/UseCase.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/presenter/controllers/TodoController.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/domain/usecases/TodoUCFactory.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/core/configs/TodoConfig.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/data/services/TodoServiceImpl.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/domain/usecases/ListTodoUseCase.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/MainApplication.java
+/Users/svalgas/devbean/cursos/0724-springboot-clean-architecture/src/main/java/br/com/devbean/domain/services/TodoService.java
