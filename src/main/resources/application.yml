@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+#    url: jdbc:h2:mem:product_db #memory
+    url: jdbc:h2:file:./product_db;DB_CLOSE_ON_EXIT=FALSE # in file
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    hibernate:
+      database-platform: org.hibernate.dialect.H2Dialect
+      ddl-auto: update # Config to store internal data into product db file created.
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+info:
+  build:
+    version: @project.version@

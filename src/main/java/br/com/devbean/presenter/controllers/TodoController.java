@@ -30,6 +30,11 @@ public class TodoController {
 
     @PostMapping
     public ResponseEntity<?> saveTodo(@RequestBody TodoRequestDTO request) {
-        return ResponseEntity.ok(request.toDomain());
+
+        return ResponseEntity.ok(
+                todoUCFactory
+                        .saveTodoUseCase()
+                        .execute(request.toDomain())
+        );
     }
 }

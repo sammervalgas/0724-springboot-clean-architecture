@@ -3,8 +3,12 @@ br/com/devbean/domain/models/Todo.class
 br/com/devbean/data/services/TodoServiceImpl.class
 br/com/devbean/domain/usecases/ListTodoUseCase.class
 br/com/devbean/domain/services/TodoService.class
-br/com/devbean/core/configs/TodoConfig.class
-br/com/devbean/presenter/dtos/TodoRequestDTO.class
+br/com/devbean/data/repositories/TodoJpaReposity.class
+br/com/devbean/data/entities/TodoEntity.class
+br/com/devbean/data/entities/mapper/TodoEntityMapper.class
 br/com/devbean/domain/usecases/TodoUCFactory.class
 br/com/devbean/MainApplication.class
 br/com/devbean/presenter/controllers/TodoController.class
+br/com/devbean/domain/usecases/SaveTodoUseCase.class
+br/com/devbean/core/configs/TodoConfig.class
+br/com/devbean/presenter/dtos/TodoRequestDTO.class

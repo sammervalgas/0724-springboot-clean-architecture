@@ -6,10 +6,11 @@ import java.util.List;
 
 /**
  * Inteface sera implementada dentro do TodoServiceImpl dentro do pacote data.services
- *
  */
 public interface TodoService {
 
     List<Todo> listTodos();
+
+    Todo save(Todo todo);
 
 }
