@@ -2,12 +2,12 @@ package br.com.devbean.domain.usecases;
 
 import br.com.devbean.domain.services.TodoService;
 
-public class TodoUCFactory {
+public class TodoUseCaseFactory {
 
     private final ListTodoUseCase listTodoUseCase;
     private final SaveTodoUseCase saveTodoUseCase;
 
-    public TodoUCFactory(TodoService todoService) {
+    public TodoUseCaseFactory(TodoService todoService) {
         this.listTodoUseCase = new ListTodoUseCase(todoService);
         this.saveTodoUseCase = new SaveTodoUseCase(todoService);
     }

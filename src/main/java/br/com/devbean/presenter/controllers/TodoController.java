@@ -2,7 +2,7 @@ package br.com.devbean.presenter.controllers;
 
 import br.com.devbean.domain.models.Todo;
 import br.com.devbean.domain.usecases.ListTodoUseCase;
-import br.com.devbean.domain.usecases.TodoUCFactory;
+import br.com.devbean.domain.usecases.TodoUseCaseFactory;
 import br.com.devbean.presenter.dtos.TodoRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,11 @@ public class TodoController {
     
 
     @Autowired
-    private TodoUCFactory todoUCFactory;
+    private TodoUseCaseFactory todoUseCaseFactory;
 
     @GetMapping
     public ResponseEntity<List<Todo>> list() {
-        ListTodoUseCase listTodoUseCase = todoUCFactory.listTodos();
+        ListTodoUseCase listTodoUseCase = todoUseCaseFactory.listTodos();
 
         return Optional.ofNullable(listTodoUseCase.execute())
                 .map(ResponseEntity::ok)
@@ -32,7 +32,7 @@ public class TodoController {
     public ResponseEntity<?> saveTodo(@RequestBody TodoRequestDTO request) {
 
         return ResponseEntity.ok(
-                todoUCFactory
+                todoUseCaseFactory
                         .saveTodoUseCase()
                         .execute(request.toDomain())
         );
