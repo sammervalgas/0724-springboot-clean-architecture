@@ -1,8 +1,7 @@
 # 0724-springboot-clean-architecture
 
-Class 02 - 
+Class 03
 
-- Spring JPA
-- H2
-- Lombok
-- UseCase Factory
+- CRUD
+- Query String
+- Model Mapper

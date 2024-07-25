@@ -23,10 +23,10 @@ public class TodoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "ID", unique = true)
     private Long id;
 
-    @Column(name = "PUBLIC_ID")
+    @Column(name = "PUBLIC_ID", unique = true)
     private UUID publicId;
 
     @Column(name = "TITLE")
@@ -47,10 +47,9 @@ public class TodoEntity {
 
     @PrePersist
     private void onCreate() {
-        this.createdAt = LocalDate.now();
+        this.setPublicId(UUID.randomUUID());
+        this.setCreatedAt(LocalDate.now());
     }
-
-
     public Long getId() {
         return id;
     }

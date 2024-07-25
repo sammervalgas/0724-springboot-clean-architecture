@@ -7,9 +7,9 @@ public class TodoEntityMapper {
 
     public static TodoEntity toEntity(Todo todo) {
         return new TodoEntity(
-                todo.title(),
-                todo.task(),
-                todo.priority()
+                todo.getTitle(),
+                todo.getTask(),
+                todo.getPriority()
         );
     }
 
@@ -17,8 +17,8 @@ public class TodoEntityMapper {
         return new Todo(
                 entity.getTitle(),
                 entity.getTask(),
-                entity.getPriority()
+                entity.getPriority(),
+                entity.getPublicId()
         );
     }
-
 }

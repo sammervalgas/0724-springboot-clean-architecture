@@ -1,22 +1,18 @@
 package br.com.devbean.presenter.dtos;
 
 import br.com.devbean.domain.models.Todo;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TodoRequestDTO {
 
-    private final String title;
-    private final String task;
-    private final Integer priority;
-
-    public TodoRequestDTO(
-            String title,
-            String task,
-            Integer priority
-    ) {
-        this.title = title;
-        this.task = task;
-        this.priority = priority;
-    }
+    private String title;
+    private String task;
+    private Integer priority;
 
     public Todo toDomain() {
         return new Todo(
