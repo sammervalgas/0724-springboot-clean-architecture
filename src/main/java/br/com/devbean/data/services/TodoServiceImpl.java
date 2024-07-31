@@ -6,7 +6,6 @@ import br.com.devbean.data.repositories.TodoJpaReposity;
 import br.com.devbean.domain.models.Todo;
 import br.com.devbean.domain.services.TodoService;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.record.RecordModule;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -53,7 +52,7 @@ public class TodoServiceImpl implements TodoService {
             ModelMapper modelMapper = new ModelMapper();
 
             // Configura ModelMaper para ignorar nulos
-            modelMapper.getConfiguration().setSkipNullEnabled(true);
+            modelMapper.getConfiguration().setSkipNullEnabled( true );
 
             // Mapeia os campos de current para referencia de `tod0` e onde for null
             modelMapper.map( current, todo );

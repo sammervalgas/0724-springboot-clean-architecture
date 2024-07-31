@@ -3,7 +3,9 @@ package br.com.devbean.presenter.controllers;
 import br.com.devbean.domain.models.Todo;
 import br.com.devbean.domain.usecases.TodoUseCaseFactory;
 import br.com.devbean.presenter.dtos.TodoRequestDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,11 +38,12 @@ public class TodoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveTodo(@RequestBody TodoRequestDTO request) {
-        return ResponseEntity.ok(
+    public ResponseEntity<?> saveTodo(@Valid @RequestBody TodoRequestDTO request) {
+        return new ResponseEntity<>(
                 todoUseCaseFactory
                         .saveTodo()
-                        .execute(request.toDomain())
+                        .execute(request.toDomain()),
+                HttpStatus.CREATED
         );
     }
 
@@ -53,7 +56,7 @@ public class TodoController {
     }
 
     @PutMapping
-    public ResponseEntity<Todo> update(@RequestParam UUID pid, @RequestBody TodoRequestDTO request) {
+    public ResponseEntity<Todo> update(@RequestParam UUID pid, @Valid @RequestBody TodoRequestDTO request) {
     return todoUseCaseFactory
                 .updateTodo()
                 .execute(pid, request.toDomain())
