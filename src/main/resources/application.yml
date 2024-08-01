@@ -24,8 +24,6 @@ springdoc:
     enabled: true
   packagesToScan: br.com.devbean.presenter.controllers
 
-
-
 info:
   build:
     version: @project.version@

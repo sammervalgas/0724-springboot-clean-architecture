@@ -1,5 +1,7 @@
 package br.com.devbean.presenter.controllers;
 
+import br.com.devbean.core.annotations.RequestLogger;
+import br.com.devbean.core.aspect.RequestLoggerType;
 import br.com.devbean.domain.models.Todo;
 import br.com.devbean.domain.usecases.TodoUseCaseFactory;
 import br.com.devbean.presenter.dtos.TodoRequestDTO;
@@ -19,6 +21,7 @@ public class TodoController {
     @Autowired
     private TodoUseCaseFactory todoUseCaseFactory;
 
+    @RequestLogger(type = RequestLoggerType.AROUND, description = "Get Mapping List ToDos")
     @GetMapping
     public ResponseEntity<List<Todo>> list() {
         return ResponseEntity.ok(
@@ -28,6 +31,7 @@ public class TodoController {
         );
     }
 
+    @RequestLogger(type = RequestLoggerType.BEFORE, value = "{pid}")
     @GetMapping("/{pid}")
     public ResponseEntity<Todo> findByPublicId(@PathVariable(name = "pid") UUID pid) {
         return this.todoUseCaseFactory
