@@ -26,28 +26,25 @@ import static org.hamcrest.Matchers.isA;
 @AutoConfigureMockMvc
 public class TodoControllerTest {
 
+    private static final String BASE_URL = "/todos";
+    private ObjectMapper objectMapper;
+    private Todo createdTodo;
+
     @Autowired
     private TodoUseCaseFactory todoUseCaseFactory;
 
     @LocalServerPort
     private int port;
 
-    private static final String BASE_URL = "/todos";
-
-    private ObjectMapper objectMapper;
-    private Todo createdTodo;
-
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper();
         // Cria um Todo para ser usado nos testes
         createdTodo = new Todo("Task 01", "Task for tests", 1, UUID.randomUUID());
-//        baseURI = "http://localhost";
     }
 
     @Test
     void testListTodos() {
-
         given()
                 .port(port)
                 .accept(ContentType.JSON)
@@ -57,8 +54,6 @@ public class TodoControllerTest {
                 .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("$", isA(List.class));
-
-
     }
 
     @Test
