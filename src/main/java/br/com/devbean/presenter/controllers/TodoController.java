@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,6 +44,11 @@ public class TodoController {
 
     @PostMapping
     public ResponseEntity<?> saveTodo(@Valid @RequestBody TodoRequestDTO request) {
+
+//        Todo todo = todoUseCaseFactory.saveTodo().execute(request.toDomain());
+//        URI uri = URI.create("/todos/pid/" + todo.getPublicId());
+//        return  ResponseEntity.created(uri).build();
+
         return new ResponseEntity<>(
                 todoUseCaseFactory
                         .saveTodo()

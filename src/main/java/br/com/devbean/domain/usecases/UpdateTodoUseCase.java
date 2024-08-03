@@ -17,7 +17,4 @@ public class UpdateTodoUseCase {
     public Optional<Todo> execute(UUID pid, Todo todo) {
         return service.update(pid, todo);
     }
-
-
-
 }

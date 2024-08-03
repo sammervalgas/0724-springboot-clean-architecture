@@ -17,11 +17,6 @@ public interface TodoJpaReposity extends JpaRepository<TodoEntity, Long> {
 
     @Transactional
     @Modifying
-//    @Query("UPDATE TodoEntity t " +
-//            "SET t.title    = :#{#todo.title}, " +
-//            "    t.task     = :#{#todo.task}, " +
-//            "    t.priority = :#{#todo.priority} " +
-//            "WHERE t.publicId = :pid")
     @Query(QueryStringUtils.TODO_CLASS.UPDATE_QUERY)
     Integer update(UUID pid, Todo todo);
 }

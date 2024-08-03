@@ -2,5 +2,5 @@
 
 Class 05
 
-- Annotations
-- Aspect aop
+- Mockito
+- Rest Assured

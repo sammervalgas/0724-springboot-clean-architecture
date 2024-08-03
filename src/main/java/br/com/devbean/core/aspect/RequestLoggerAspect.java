@@ -56,11 +56,9 @@ public class RequestLoggerAspect {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
 
-        //
         Object[] args = joinPoint.getArgs();
-        //
+
         ExpressionParser parser = new SpelExpressionParser();
-        //
         Expression expression = parser.parseExpression(requestLogger.value().replace(requestLogger.value(), "[0]"));
 
         UUID pid = expression.getValue(args, UUID.class);

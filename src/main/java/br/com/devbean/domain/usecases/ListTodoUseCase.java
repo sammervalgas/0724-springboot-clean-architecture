@@ -1,6 +1,5 @@
 package br.com.devbean.domain.usecases;
 
-import br.com.devbean.core.shared.UseCase;
 import br.com.devbean.domain.models.Todo;
 import br.com.devbean.domain.services.TodoService;
 
