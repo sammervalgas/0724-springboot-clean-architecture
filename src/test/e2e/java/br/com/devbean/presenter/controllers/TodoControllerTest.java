@@ -6,6 +6,7 @@ import br.com.devbean.presenter.dtos.TodoRequestDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 
 import java.util.List;
 import java.util.UUID;
@@ -45,11 +45,7 @@ public class TodoControllerTest {
 
     @Test
     void testListTodos() {
-        given()
-                .port(port)
-                .accept(ContentType.JSON)
-                .contentType(ContentType.JSON)
-                .when()
+        requestWhen()
                 .get(BASE_URL)
                 .then()
                 .statusCode(HttpStatus.OK.value())
@@ -58,9 +54,7 @@ public class TodoControllerTest {
 
     @Test
     void testSaveTodo() throws JsonProcessingException {
-        given().port(port)
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
+        requestWhen()
                 .body(objectMapper.writeValueAsString(
                         new TodoRequestDTO(
                                 createdTodo.getTitle(),
@@ -80,10 +74,8 @@ public class TodoControllerTest {
         // Primeiro, salve o Todo para ter um ID válido
         UUID pid = todoUseCaseFactory.saveTodo().execute(createdTodo).getPublicId();
 
-        given()
-                .port(port)
+        requestWhen()
                 .pathParam("pid", pid)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .when()
                 .get(BASE_URL + "/{pid}")
                 .then()
@@ -103,10 +95,8 @@ public class TodoControllerTest {
 
         Todo updatedTodo = new Todo("Updated Task", "Updated task description", 2);
 
-        given()
-                .port(port)
+        requestWhen()
                 .queryParam("pid", pid)
-                .contentType(ContentType.JSON)
                 .body(objectMapper.writeValueAsString(new TodoRequestDTO(
                         updatedTodo.getTitle(),
                         updatedTodo.getTask(),
@@ -127,13 +117,20 @@ public class TodoControllerTest {
         // Primeiro, salve o Todo para ter um ID válido
         UUID pid = todoUseCaseFactory.saveTodo().execute(createdTodo).getPublicId();
 
-        given()
-                .port(port)
+        requestWhen()
                 .queryParam("pid", pid)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .when()
                 .delete(BASE_URL)
                 .then()
                 .statusCode(HttpStatus.NO_CONTENT.value());
     }
+
+    RequestSpecification requestWhen() {
+        return given()
+                .port(port)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .when();
+    }
+
 }
